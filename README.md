@@ -22,17 +22,17 @@ pip install -r requirements.txt
 
 # Arduino Environment Setup
 
-1. Download [Arduino IDE](https://www.arduino.cc/en/software);
+1. Download [Arduino IDE - `Linux ZIP file 64 bits (X86-64) version`](https://www.arduino.cc/en/software);
 
-2. Install Arduino:
+2. Install and unzip Arduino:
 ```
-chmod + x arduino..
+chmod +x arduino-ide
 ./arduino-ide
 ```
 
-3. Open Arduino IDE;
+3. Open Arduino IDE. Go to `File > Preferences`;
 
-4. Go to `File > Preferences`. Enter the following link into the `Additional Board Manager URLs` field and click **OK**:
+4. Enter the following link into the `Additional Board Manager URLs` field and click **OK**:
 ```
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json 
 ```
@@ -41,11 +41,19 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 
 6. Install the ESP32 by Espressif Systems;
 
-7. USB permission:
+7. If you have some USB permission issue like:
 
+>```cpp
+>fatal error occurred: Could not open /dev/ttyACM0, the port doesn't exist
+>Failed uploading: uploading error: exit status 2
+>```
+
+**Type:**
 ```bash
 sudo adduser $USER $(stat --format="%G" /dev/ttyACM0 )
 ```
+
+8. Reboot your PC and try again.
 
 # References
 
