@@ -1,5 +1,8 @@
 # sbai-course
-sbai-course
+
+This is [SBAI 2023](https://sbai2023.com.br/sbai/) minicourse material. The course title is ***Portando Modelos IA para microcontroladores de 32 bits***.
+
+Follow steps below to create course environemnt and execute the lessons.
 
 # Python Environment Setup
 
@@ -22,9 +25,9 @@ pip install -r requirements.txt
 
 # Arduino Environment Setup
 
-1. Download [Arduino IDE - `Linux ZIP file 64 bits (X86-64) version`](https://www.arduino.cc/en/software);
+1. Download and unzip [Arduino IDE - `Linux ZIP file 64 bits (X86-64) version`](https://www.arduino.cc/en/software);
 
-2. Install and unzip Arduino:
+2. Make `arduino-ide` executable and install it:
 ```
 chmod +x arduino-ide
 ./arduino-ide
