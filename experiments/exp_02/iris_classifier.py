@@ -11,8 +11,8 @@ if __name__ == '__main__':
 
     # Load iris dataset:
     X, y = load_iris(return_X_y=True)
-    print("Shape of X:", X.shape, "\tSize of y:", len(y))
-    print("X:", X)
+    print("\nShape of X:", X.shape, "\tSize of y:", len(y))
+    print("\nX:", X)
     print("\ny:", y)
     
     # Splitting into train and test
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # --- Performance in Test ---
     test_prediction = model.predict(X_test)
-    print(training_prediction)
+    print(test_prediction)
 
     print("\nPrecision, Recall, Confusion matrix, in testing\n")
     # Precision Recall scores
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
     # --- Test classification in randomic samples ---
     # Sample of a Setosa
-    print('The accuracy of model is:', model.predict([[5.1, 3.5, 1.4, 0.2]]))
+    print('\nThe accuracy of model is:', model.predict([[5.1, 3.5, 1.4, 0.2]]))
 
     # Sample of a Versicolor
     print('The accuracy of model is:', model.predict([[6.2, 2.2, 4.5,1.5]]))

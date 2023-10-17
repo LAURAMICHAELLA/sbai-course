@@ -61,3 +61,12 @@ sudo adduser $USER $(stat --format="%G" /dev/ttyACM0 )
 # References
 
 - [How to install virtualenv](https://gist.github.com/frfahim/73c0fad6350332cef7a653bcd762f08d);
+- [TinyML Foundation](https://www.tinyml.org/)
+- [Micromlgen](https://eloquentarduino.com/libraries/micromlgen/)
+- [Github micromlgen](https://github.com/eloquentarduino/micromlgen)
+- [How to get started fast with
+Arduino Machine Learning](https://eloquentarduino.com/arduino-machine-learning/)
+- [The Iris Dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html)
+- [Iris Dataset Analysis using Python](https://www.hackersrealm.net/post/iris-dataset-analysis-using-python)
+- [Iris Dataset Classification with Python: A Tutorial](https://www.pycodemates.com/2022/05/iris-dataset-classification-with-python.html)
+- [Iris Data Prediction using Decision Tree Algorithm](https://medium.com/analytics-vidhya/iris-data-prediction-using-decision-tree-algorithm-7948fb68201b)
