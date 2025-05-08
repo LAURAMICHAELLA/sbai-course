@@ -11,7 +11,6 @@ Este projeto demonstra como implementar um classificador SVM para o dataset Iris
 
 ### 1. Modelo Pré-treinado (C++)
 ```bash
-```cpp
 // Modelo SVM exportado do Python
 const float supportVectors[] = { /* ... */ };  // Vetores de suporte
 const float coefficients[] = { /* ... */ };    // Coeficientes do modelo
