@@ -16,8 +16,11 @@ const float supportVectors[] = { /* ... */ };  // Vetores de suporte
 const float coefficients[] = { /* ... */ };    // Coeficientes do modelo
 const float intercept = -0.0588;               // Viés (bias)
 SVMClassifier classifier(/* ... */);           // Instância do classificador
+
+### 1. Modelo Pré-treinado (C++)
+
 2. Dados de Entrada
-cpp
+```cpp
 // Dados simulados (substituir por leituras de sensores)
 float flowerData[4] = {
     5.1,  // Comprimento sépala (cm)
@@ -25,6 +28,9 @@ float flowerData[4] = {
     1.4,  // Comprimento pétala (cm)
     0.2   // Largura pétala (cm)
 };
+
+### 1. Modelo Pré-treinado (C++)
+
 3. Classificação
 cpp
 int classId = classifier.predict(flowerData);
