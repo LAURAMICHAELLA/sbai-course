@@ -195,11 +195,61 @@ Pode ser um array fixo (como no exemplo) ou Dados lidos de sensores `(ex: float 
 
 
 
-### 📌 Limitações
-Item	                    Detalhe
-Memória RAM	                Apenas ~2KB no Arduino Uno
-Tamanho do Dataset	        Máximo 10-20 amostras (tipicamente)
-Complexidade	            Modelos lineares funcionam melhor
+## ⚠️ Limitações Técnicas
+
+| Componente               | Arduino Uno/Nano       | Arduino + SD Card      | ESP32/ESP8266          |
+|--------------------------|-----------------------|-----------------------|-----------------------|
+| **Memória RAM**          | 2KB (~20 amostras)    | 1-2KB livres após SD  | 320KB+ (livre)        |
+| **Armazenamento**        | 32KB (Flash)          | Até 1MB (arquivo .txt)| 4MB+ (SPIFFS/LittleFS)|
+| **Velocidade de Leitura**| N/A (dados embutidos) | ~10-50ms/linha        | ~5-20ms/linha         |
+| **Formato Suportado**    | Arrays no código      | CSV simples           | JSON/CSV              |
+| **Custo**               | $                    | $$                    | $$$                   |
+| **Complexidade**        | Modelos Lineares     | $$                    | Redes                    |
+
+## 🚀 Complexidade Computacional vs Hardware
+
+| Algoritmo       | Arduino Uno/Nano (ATmega328P) | Arduino + SD Card          | ESP32/ESP8266              |
+|-----------------|-----------------------------|--------------------------|--------------------------|
+| **SVM Linear**  | 🟡 (Até 3 features)         | 🟢 (Até 10 features)      | 🟢 (Até 100 features)     |
+| **Árvore**      | 🟢 (Profundidade ≤ 5)       | 🟢 (Profundidade ≤ 10)    | 🟢 (Profundidade ≤ 20)    |
+| **KNN**         | 🔴 (Inviável)               | 🟡 (Até 15 amostras)      | 🟢 (Até 1000 amostras*)   |
+| **RNA Tiny**    | 🔴 (Inviável)               | 🔴 (Inviável)             | 🟡 (Até 3 camadas)        |
+
+### Critérios de Avaliação:
+- **🟢 Viável**: Execução em < 50ms, RAM < 80% livre  
+- **🟡 Limitado**: Requer otimizações (ex: quantização)  
+- **🔴 Inviável**: Estoura memória ou > 500ms/inferência  
+
+### Chave Técnica:
+| Símbolo | CPU Clock | RAM Livre | Flash | Observações                     |
+|--------|-----------|-----------|-------|---------------------------------|
+| Uno    | 16MHz     | 2KB       | 32KB  | Sem acelerador matemático       |
+| +SD    | 16MHz     | 1-2KB     | 32KB  | Overhead de leitura do SD       |
+| ESP32  | 160-240MHz| 320KB     | 4MB   | Acelerador de ponto flutuante   |
+
+**Memória**: Uso típico para dataset Iris (4 features)
+- *KNN*: Armazenamento do dataset na RAM (inviável acima de 20 amostras)
+
+> *Com armazenamento em SPIFFS/LittleFS. Dados assumem 4 features por amostra.
+
+### Quando evitar:
+- ❌ KNN no Uno (consumo RAM exponencial)
+- ❌ RNAs não quantizadas (exceto no ESP32 com TensorFlow Lite)
+
+### ⚠️ Recomendações Críticas
+- Evite KNN em dispositivos com < 8KB RAM.
+
+- Prefira árvores para sistemas com:
+
+- Restrição de energia
+
+- Necessidade de inferência ultra-rápida (< 5ms)
+
+- RNAs só são viáveis em ESP32 com acelerador tensor-lite.
+
+> **Nota**: Valores assumem dataset Iris (150 amostras × 4 features × 4 bytes = ~2.4KB).  
+> Para projetos reais, prefira ESP32 ou enviar dados por serial/HTTP.
+
 
 # 🔗 Recursos Úteis
 ## Concepts
