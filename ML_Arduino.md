@@ -51,12 +51,82 @@ const int irisLabels[3] = {0, 1, 2};
 ### 5. 🔄 Fluxo de Trabalho
 Treinar em Python:
 
-python
+```python
 from sklearn.svm import SVC
 from micromlgen import port
 model = SVC(kernel='linear').fit(X_train, y_train)
 print(port(model))  # Exporta para C++
-Implementar no Arduino (como no código acima).
+```
+
+
+### 6. Implementar no Arduino
+```cpp
+#include <microml.h>
+#include <Arduino.h>
+
+// 1. Modelo SVM pré-treinado (exportado do Python)
+const float supportVectors[] = { /* ... */ };  // Vetores de suporte
+const float coefficients[] = { /* ... */ };    // Coeficientes
+const float intercept = -0.0588;               // Bias
+const int nClasses = 3;
+const int nSupports = 3;
+const int nFeatures = 4;
+
+SVMClassifier classifier(
+    supportVectors,
+    coefficients,
+    intercept,
+    nClasses,
+    nSupports,
+    nFeatures
+);
+
+void setup() {
+    Serial.begin(9600);
+    while (!Serial);
+    Serial.println("Classificador Iris com microML");
+}
+
+void loop() {
+    // 2. Dados de entrada (simulados ou de sensores)
+    float input[4] = {5.1, 3.5, 1.4, 0.2};  // Exemplo: Iris Setosa
+    
+    // 3. Classificação
+    int prediction = classifier.predict(input);
+    
+    // 4. Saída
+    Serial.print("Classe prevista: ");
+    switch(prediction) {
+        case 0: Serial.println("Iris Setosa"); break;
+        case 1: Serial.println("Iris Versicolor"); break;
+        case 2: Serial.println("Iris Virginica"); break;
+    }
+    delay(2000);
+}
+```
+### 6. O que você precisa fazer:
+
+Substituir os placeholders (/* ... */) pelos valores reais do seu modelo exportado do Python (usando micromlgen).
+
+Adaptar os dados de entrada:
+
+Pode ser um array fixo (como no exemplo) ou Dados lidos de sensores (ex: float input[4] = {sensor1.read(), sensor2.read(), ...};).
+
+### 7. Como gerar o modelo em Python (para obter os valores exatos):
+```python
+from sklearn.svm import SVC
+from micromlgen import port
+from sklearn.datasets import load_iris
+
+# Carrega o dataset Iris
+X, y = load_iris(return_X_y=True)
+
+# Treina o modelo
+model = SVC(kernel='linear').fit(X, y)
+
+# Gera o código C++ para o Arduino
+print(port(model))  # Copie a saída para substituir no código Arduino
+```
 
 📌 Limitações
 Item	Detalhe
