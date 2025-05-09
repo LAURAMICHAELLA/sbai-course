@@ -202,9 +202,9 @@ Tamanho do Dataset	        Máximo 10-20 amostras (tipicamente)
 Complexidade	            Modelos lineares funcionam melhor
 
 # 🔗 Recursos Úteis
-
+## Concepts
 - [Biblioteca microML](https://github.com/eloquentarduino/micromlgen)
-- [Dataset Iris](https://www.tinyml.org/](https://archive.ics.uci.edu/dataset/53/iris)
+- [Dataset Iris](https://archive.ics.uci.edu/dataset/53/iris)
 
 
 
