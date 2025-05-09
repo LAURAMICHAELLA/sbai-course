@@ -110,7 +110,7 @@ Substituir os placeholders (/* ... */) pelos valores reais do seu modelo exporta
 
 Adaptar os dados de entrada:
 
-Pode ser um array fixo (como no exemplo) ou Dados lidos de sensores (ex: float input[4] = {sensor1.read(), sensor2.read(), ...};).
+Pode ser um array fixo (como no exemplo) ou Dados lidos de sensores '(ex: float input[4] = {sensor1.read(), sensor2.read(), ...};)'.
 
 ### 7. Como gerar o modelo em Python (para obter os valores exatos):
 ```python
@@ -128,12 +128,13 @@ model = SVC(kernel='linear').fit(X, y)
 print(port(model))  # Copie a saída para substituir no código Arduino
 ```
 
-📌 Limitações
-Item	Detalhe
-Memória RAM	Apenas ~2KB no Arduino Uno
-Tamanho do Dataset	Máximo 10-20 amostras (tipicamente)
-Complexidade	Modelos lineares funcionam melhor
-🔗 Recursos Úteis
+### 📌 Limitações
+Item	                    Detalhe
+Memória RAM	                Apenas ~2KB no Arduino Uno
+Tamanho do Dataset	        Máximo 10-20 amostras (tipicamente)
+Complexidade	            Modelos lineares funcionam melhor
+
+###  🔗 Recursos Úteis
 Biblioteca microML
 
 Dataset Iris
