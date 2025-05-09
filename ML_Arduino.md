@@ -135,7 +135,7 @@ model = SVC(kernel='linear').fit(X, y)
 # Gera o código C++ para o Arduino
 print(port(model))  # Copie a saída para substituir no código Arduino
 ```
-```
+
 # Observação:
 O dataset é carregado apenas durante o treinamento.
 O Arduino só recebe o modelo já treinado (não o dataset completo).
