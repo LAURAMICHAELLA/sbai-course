@@ -15,7 +15,7 @@ microML é uma implementação simplificada de machine learning para microcontro
 
 # Prepare seu modelo de machine learning (geralmente criado em Python com scikit-learn) e converta-o para formato compatível com Arduino.
 
--- Passos básicos:
+-  Passos básicos:
 1. Treine seu modelo em Python
 2. Use o gerador de código do microML para exportar o modelo
 3. Copie o código gerado para seu sketch Arduino
