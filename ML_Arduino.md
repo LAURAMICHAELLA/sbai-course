@@ -7,19 +7,19 @@ microML é uma implementação simplificada de machine learning para microcontro
 ## Como utilizar microML no Arduino
 
 # Pré-requisitos:
-Instale a biblioteca microML no Arduino IDE:
+1. Instale a biblioteca microML no Arduino IDE:
 
-Vá em `"Sketch" > "Incluir Biblioteca" > "Gerenciar Bibliotecas"`
+2. Vá em `"Sketch" > "Incluir Biblioteca" > "Gerenciar Bibliotecas"`
 
-Busque por `microml` e instale a biblioteca
+3. Busque por `microml` e instale a biblioteca
 
 # Prepare seu modelo de machine learning (geralmente criado em Python com scikit-learn) e converta-o para formato compatível com Arduino.
 
 -- Passos básicos:
--Treine seu modelo em Python
--Use o gerador de código do microML para exportar o modelo
--Copie o código gerado para seu sketch Arduino
-- Implemente a lógica de coleta de dados e predição
+1. Treine seu modelo em Python
+2. Use o gerador de código do microML para exportar o modelo
+3. Copie o código gerado para seu sketch Arduino
+4. Implemente a lógica de coleta de dados e predição
 
 ## ⚠️ Atenção
 - O Arduino **não carrega o dataset completo** devido a limitações de memória.
